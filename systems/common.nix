@@ -29,7 +29,7 @@
 
     pipewire'.enable = true;
     printing'.enable = true;
-
+    udisks2.enable = true;
     xserver = {
       enable = true;
       displayManager.sx.enable = true;

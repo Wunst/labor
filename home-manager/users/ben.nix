@@ -35,6 +35,13 @@
 
   wm.i3.enable = true;
 
+  services = {
+    # Tray icons.
+    udiskie.enable = true;
+    network-manager-applet.enable = true;
+    pasystray.enable = true;
+  };
+
   # Additional packages without configuration.
   home.packages = with pkgs; [
     # Office.
@@ -59,7 +66,8 @@
 
     # Multimedia.
     thunar
-    feh
+    mate.engrampa
+    mate.eom
     vlc
     spotify-spotx
     yt-dlp
