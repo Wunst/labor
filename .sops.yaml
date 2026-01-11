@@ -1,0 +1,13 @@
+keys:
+  # User key for encryption and editing.
+  - &ben age1fido2-hmac1qqprj79lwgwrd08xvek2nkgh8suf28fxeavnnkj7gazmgcuzsdupg0spqhcnf80vn23u3kn52ul7zdtksjdd966qmtpc5pkh4378mqcvwsx9xyq7dhjq6x47dpyzaxykjxq5zwsvn4gcthac6rtujlf8fxfu5vw3l00jp9nefu73gqwpjhquxp7e34k6yu9tv06q9rc4jtl3dnnpwr25cr4ezvf22r6k68cm8y6jey3u90xnjvk4x00nljag53s67fr65k77smg
+
+  # Host keys for decryption.
+  - &wunstpc age18cj8afvq9g47suts9gn5fhgjdrguhu08u8n3zr5yqnewk8e7edzq5ar8t4
+
+creation_rules:
+  - path_regex: secrets/
+    key_groups:
+    - age:
+      - *ben
+      - *wunstpc
