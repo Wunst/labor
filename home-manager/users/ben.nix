@@ -11,26 +11,7 @@
     kitty'.enable = true;
     firefox'.enable = true;
     thunderbird'.enable = true;
-    vim = {
-      enable = true;
-      defaultEditor = true;
-      extraConfig = ''
-        set nu
-        set rnu
-
-        set shiftwidth=2
-        set expandtab
-        set smartindent
-
-        set clipboard=unnamedplus
-
-        set undofile
-        set undodir=$HOME/.vim/undodir
-
-        filetype plugin indent on
-        colorscheme retrobox
-      '';
-    };
+    neovim'.enable = true;
   };
 
   wm.i3.enable = true;
