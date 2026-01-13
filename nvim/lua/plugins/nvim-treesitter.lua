@@ -1,3 +1,5 @@
+-- nvim-treesitter: Treesitter parsers and syntax highlighting
+
 return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,

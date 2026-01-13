@@ -1,3 +1,5 @@
+-- telescope.nvim: Fuzzy finder and file browser for neovim
+
 return {
   "nvim-telescope/telescope-file-browser.nvim",
   dependencies = {

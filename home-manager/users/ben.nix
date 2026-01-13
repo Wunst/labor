@@ -59,6 +59,7 @@
 
     # LaTeX.
     texliveFull
+    texlab
 
     # Web dev.
     filezilla

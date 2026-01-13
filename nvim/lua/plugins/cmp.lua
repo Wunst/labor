@@ -1,3 +1,5 @@
+-- nvim-cmp: Completions from LSP, paths etc.
+
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
