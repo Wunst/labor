@@ -9,6 +9,7 @@
     ./services/openssh.nix
     ./services/pipewire.nix
     ./services/printing.nix
+    ./services/random-background
     ./services/window-manager/i3.nix
   ];
 }

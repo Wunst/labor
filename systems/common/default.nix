@@ -39,6 +39,8 @@
     neovim'.enable = true;
 
     gnupg.agent.enable = true;
+
+    steam.enable = true;
   };
 
   services = {
@@ -53,7 +55,12 @@
       autoLogin.user = "ben";
     };
 
+    # WM/DE/ricing setup.
     window-manager.i3'.enable = true;
+    random-background' = {
+      enable = true;
+      theme = "solarized";
+    };
   };
 
   environment.systemPackages = with pkgs; [
