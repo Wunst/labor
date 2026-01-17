@@ -55,25 +55,9 @@
         ./modules
         ./systems/wunstpc
         {
-          # Connect everything together.
           nixpkgs.overlays = [
             self.overlays.default
           ];
-          sops = {
-            defaultSopsFormat = "binary";
-            age.sshKeyPaths = [
-              "/etc/ssh/ssh_host_ed25519_key"
-            ];
-          };
-
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.ben.imports = [
-              ./home-manager/modules
-              ./home-manager/users/ben.nix
-            ];
-          };
         }
         ./allow-unfree.nix
       ];

@@ -14,19 +14,21 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs = {
-      # Credential helper for github.
-      gh.enable = true;
-      git = {
-        enable = true;
-        settings = {
-          init.defaultBranch = "main";
+    home-manager.users.ben = {
+      programs = {
+        # Credential helper for github.
+        gh.enable = true;
+        git = {
+          enable = true;
+          settings = {
+            init.defaultBranch = "main";
 
-          # Abbreviate github URLs, as in Nix.
-          url."https://github.com/".insteadOf = "github:";
-          user = {
-            name = cfg.userName;
-            email = cfg.userEmail;
+            # Abbreviate github URLs, as in Nix.
+            url."https://github.com/".insteadOf = "github:";
+            user = {
+              name = cfg.userName;
+              email = cfg.userEmail;
+            };
           };
         };
       };
