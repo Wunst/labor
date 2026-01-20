@@ -1,4 +1,6 @@
 {
+  programs.gnupg.agent.enable = true;
+
   home-manager.users.ben = {
     accounts = {
       email.accounts = {

@@ -52,12 +52,19 @@
 
         sops-nix.nixosModules.default
         nur.modules.nixos.default
-        ./modules
+        ./config
         ./systems/wunstpc
         {
           nixpkgs.overlays = [
             self.overlays.default
           ];
+
+          sops = {
+            defaultSopsFormat = "binary";
+            age.sshKeyPaths = [
+              "/etc/ssh/ssh_host_ed25519_key"
+            ];
+          };
         }
         ./allow-unfree.nix
       ];

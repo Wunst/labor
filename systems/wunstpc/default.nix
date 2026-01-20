@@ -1,10 +1,10 @@
 {
   imports = [
-    ../common
     ./hardware-configuration.nix
   ];
 
   networking.hostName = "wunstpc";
+
   disko.devices.disk.main = {
     type = "disk";
     device = "/dev/nvme0n1";

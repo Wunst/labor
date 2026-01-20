@@ -1,13 +1,6 @@
 {
   time.timeZone = "Europe/Berlin";
-  i18n = {
-    defaultLocale = "C.UTF-8";
-    extraLocaleSettings = {
-      # 24 hour clock.
-      LC_TIME = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-    };
-  };
+  i18n.defaultLocale = "en_IE.UTF-8";
 
   console = {
     font = "eurlatgr";

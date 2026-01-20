@@ -1,0 +1,29 @@
+{
+  imports = [
+    ./auto-login.nix
+    ./boot.nix
+    ./email.nix
+    ./games.nix
+    ./i18n.nix
+    ./nix.nix
+    ./app/creative.nix
+    ./app/discord.nix
+    ./app/firefox.nix
+    ./app/git.nix
+    ./app/kitty.nix
+    ./app/multimedia.nix
+    ./app/office.nix
+    ./app/thunderbird.nix
+    ./dev/latex.nix
+    ./dev/arduino.nix
+    ./editor/neovim.nix
+    ./networking/networkmanager.nix
+    ./services/openssh.nix
+    ./services/pipewire.nix
+    ./services/printing.nix
+    ./services/random-background
+    ./shell/zsh.nix
+    ./users/ben.nix
+    ./wm/i3.nix
+  ];
+}
