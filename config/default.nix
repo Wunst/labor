@@ -3,9 +3,11 @@
     ./auto-login.nix
     ./boot.nix
     ./email.nix
+    ./font.nix
     ./games.nix
     ./i18n.nix
     ./nix.nix
+    ./theme.nix
     ./app/creative.nix
     ./app/discord.nix
     ./app/firefox.nix
