@@ -17,6 +17,7 @@
     ./app/office.nix
     ./app/thunderbird.nix
     ./dev/latex.nix
+    ./dev/jupyter.nix
     ./dev/arduino.nix
     ./editor/neovim.nix
     ./networking/networkmanager.nix

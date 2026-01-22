@@ -12,8 +12,12 @@
             statusCommand = "${pkgs.i3status}/bin/i3status"; }
         ];
         gaps = {
-          inner = 8;
+          inner = 6;
           outer = 4;
+        };
+        window = {
+          border = 4;
+          titlebar = false;
         };
       };
     };
