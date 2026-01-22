@@ -36,4 +36,21 @@ in {
       default = themes.${cfg.name};
     };
   };
+
+  config = {
+    # Required to set gtk configuration.
+    programs.dconf.enable = true;
+
+    home-manager.users.ben = {
+      gtk = {
+        enable = true;
+        colorScheme = "dark";
+      };
+      qt = {
+        enable = true;
+        platformTheme.name = "gtk3";
+        style.name = "adwaita-dark";
+      };
+    };
+  };
 }
