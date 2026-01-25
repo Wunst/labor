@@ -28,5 +28,6 @@
     ./shell/zsh.nix
     ./users/ben.nix
     ./wm/i3.nix
+    ./xdg.nix
   ];
 }
