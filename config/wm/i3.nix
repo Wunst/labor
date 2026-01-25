@@ -53,6 +53,38 @@ in {
 
           Print = "exec ${pkgs.mate.mate-utils}/bin/mate-screenshot";
         };
+
+        # Assign windows to workspaces.
+        assigns = {
+          "2" = [{ class = "^firefox$"; }];
+          "3" = [{ class = "^libreoffice"; }];
+          "4" = [
+            { class = "^Gimp$"; }
+            { class = "^Inkscape$"; }
+            { class = "^krita$"; }
+          ];
+          "5" = [
+            { class = "^KiCad$"; }
+            { class = "^FreeCAD$"; }
+          ];
+          "6" = [{ class = "^Blender$"; }];
+          "7" = [
+            { class = "^Audacity$"; }
+            { class = "^obs$"; }
+          ];
+          "8" = [
+            { class = "^steam$"; }
+            { class = "^PrismLauncher$"; }
+          ];
+          "9" = [
+            { class = "^vlc$"; }
+            { class = "^Spotify$"; }
+          ];
+          "10" = [
+            { class = "^discord$"; }
+            { class = "^thunderbird$"; } # Group communications related software together.
+          ];
+        };
       };
     };
 
