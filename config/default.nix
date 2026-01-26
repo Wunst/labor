@@ -14,6 +14,7 @@
     ./app/git.nix
     ./app/kitty.nix
     ./app/multimedia.nix
+    ./app/obs-studio.nix
     ./app/office.nix
     ./app/thunderbird.nix
     ./dev/latex.nix

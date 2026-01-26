@@ -6,7 +6,6 @@
     blender
     audacity
     musescore
-    obs-studio
     kicad
     freecad
   ];
