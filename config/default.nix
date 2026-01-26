@@ -17,6 +17,7 @@
     ./app/obs-studio.nix
     ./app/office.nix
     ./app/thunderbird.nix
+    ./app/tmux.nix
     ./dev/latex.nix
     ./dev/jupyter.nix
     ./dev/arduino.nix
