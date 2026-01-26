@@ -14,12 +14,8 @@ in {
   # Enable XDG desktop portal.
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config.common.default = [
-      "gtk"
-    ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "gtk" ];
   };
 
   home-manager.users.ben = {
@@ -57,7 +53,6 @@ in {
         # Assign windows to workspaces.
         assigns = {
           "2" = [{ class = "^firefox$"; }];
-          "3" = [{ class = "^libreoffice"; }];
           "4" = [
             { class = "^Gimp$"; }
             { class = "^Inkscape$"; }
@@ -85,6 +80,12 @@ in {
             { class = "^thunderbird$"; } # Group communications related software together.
           ];
         };
+
+        window.commands = [
+          # We have to use `for_window` as libreoffice does not set class on first draw.
+          { criteria = { class = "libreoffice"; };
+            command = "move to workspace number 3"; }
+        ];
       };
     };
 
@@ -144,6 +145,8 @@ in {
 
           "module/title" = {
             type = "internal/xwindow";
+            format = "<label>";
+            label = "%title%";
             label-empty = "";
             label-maxlen = 50;
           };
