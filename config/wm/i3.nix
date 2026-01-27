@@ -11,6 +11,15 @@ in {
     };
   };
 
+  # Some essential DE utilities.
+  environment.systemPackages = with pkgs; [
+    thunar
+    tumbler
+    ffmpegthumbnailer
+    mate.engrampa
+    mate.eom
+  ];
+
   # Enable XDG desktop portal.
   xdg.portal = {
     enable = true;
@@ -85,6 +94,9 @@ in {
           # We have to use `for_window` as libreoffice does not set class on first draw.
           { criteria = { class = "libreoffice"; };
             command = "move to workspace number 3"; }
+
+          { criteria = { class = "^Thunar$"; };
+            command = "floating enable"; }
         ];
       };
     };
