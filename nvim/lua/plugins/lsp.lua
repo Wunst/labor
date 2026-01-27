@@ -10,6 +10,10 @@ return {
     vim.lsp.enable("ts_ls") -- Javascript.
     vim.lsp.enable("clangd") -- C/C++.
 
+    vim.lsp.enable("html")
+    vim.lsp.enable("cssls")
+    vim.lsp.enable("emmet_language_server")
+
     vim.lsp.enable("gdscript")
 
     vim.lsp.config("rust_analyzer", {
