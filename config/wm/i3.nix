@@ -17,6 +17,9 @@ in {
     tumbler
     ffmpegthumbnailer
     mate.engrampa
+    zip
+    unzip
+    p7zip
     mate.eom
   ];
 
@@ -95,7 +98,7 @@ in {
           { criteria = { class = "libreoffice"; };
             command = "move to workspace number 3"; }
 
-          { criteria = { class = "^Thunar$"; };
+          { criteria = { class = "^(Thunar|Eom|Engrampa)$"; };
             command = "floating enable"; }
         ];
       };
