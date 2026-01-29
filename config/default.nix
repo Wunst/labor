@@ -21,6 +21,7 @@
     ./dev/latex.nix
     ./dev/jupyter.nix
     ./dev/arduino.nix
+    ./dev/godot.nix
     ./dev/web.nix
     ./editor/neovim.nix
     ./networking/networkmanager.nix
