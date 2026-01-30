@@ -2,6 +2,7 @@
   imports = [
     ./auto-login.nix
     ./boot.nix
+    ./docker.nix
     ./email.nix
     ./font.nix
     ./games.nix

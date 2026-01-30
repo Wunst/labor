@@ -8,13 +8,12 @@
     isNormalUser = true;
     description = "Ben";
     shell = pkgs.zsh;
-
     hashedPasswordFile = config.sops.secrets.hashedPassword.path;
-
     extraGroups = [
       "wheel"
       "networkmanager"
       "dialout"
+      "docker"
     ];
   };
 
