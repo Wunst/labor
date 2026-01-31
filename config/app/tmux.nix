@@ -5,6 +5,7 @@
       shortcut = "a";
       keyMode = "vi";
       terminal = "tmux-256color";
+      mouse = true;
       baseIndex = 1;
       escapeTime = 100;
     };
