@@ -1,5 +1,6 @@
 {
   imports = [
+    ./backup.nix
     ./hardware-configuration.nix
   ];
 
