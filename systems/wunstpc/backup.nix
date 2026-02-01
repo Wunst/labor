@@ -27,26 +27,25 @@
 
   systemd.services.snapshot-and-backup-home = {
     startAt = "*-*-* 18:00:00";
-    path = with pkgs; [ btrfs-progs mount ];
+    path = with pkgs; [ btrfs-progs ];
     after = [ "local-fs.target" ];
     script = ''
-      btrfs su delete /backup-new || true
-
       btrfs su sn -r /home /backup-new
       sync
 
-      if [ -e /backup ]; then
+      if [ -e /backup ] ; then
         echo Doing incremental backup...
-        btrfs send --compressed-data -p /backup /backup-new | btrfs receive /mnt/backup/daily
+        btrfs send --compressed-data -p /backup /backup-new | btrfs receive /mnt/backup
       else
         echo Doing full backup...
-        btrfs send --compressed-data /backup-new | btrfs receive /mnt/backup/daily
+        btrfs send --compressed-data /backup-new | btrfs receive /mnt/backup
       fi
-      sync
 
-      btrfs su delete /backup || true
+      mv /mnt/backup/backup-new /mnt/backup/backup
+      btrfs su sn -r /mnt/backup/backup /mnt/backup/backup.$(date +%Y-%m-%d.%H:%M:%S)
+
+      btrfs su de /backup || true
       mv /backup-new /backup
-      btrfs su sn -r /mnt/backup/daily /mnt/backup/daily.$(date +%Y-%m-%d)
     '';
   };
 }
