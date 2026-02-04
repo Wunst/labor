@@ -31,8 +31,12 @@ in {
   };
 
   home-manager.users.ben = {
-    # Media keys.
-    services.playerctld.enable = true;
+    services = {
+      # Media keys.
+      playerctld.enable = true;
+
+      gnome-keyring.enable = true;
+    };
 
     xsession.windowManager.i3 = {
       enable = true;

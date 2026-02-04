@@ -36,6 +36,7 @@ return {
 
           -- Folders before files.
           grouped = true,
+          collapse_dirs = true,
 
           hidden = {
             file_browser = true,

@@ -10,6 +10,8 @@ return {
     vim.lsp.enable("ts_ls") -- Javascript.
     vim.lsp.enable("clangd") -- C/C++.
 
+    vim.lsp.enable("jdtls") -- Java.
+
     vim.lsp.enable("html")
     vim.lsp.enable("cssls")
     vim.lsp.enable("emmet_language_server")
@@ -36,5 +38,6 @@ return {
   -- Replace builtin goto definition with LSP.
   keys = {
     { "gd", vim.lsp.buf.definition },
+    { "<Leader>ca", vim.lsp.buf.code_action },
   },
 }
