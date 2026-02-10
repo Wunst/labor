@@ -1,51 +1,31 @@
-{ pkgs, ... }: {
-  # All of this only works for a single backup drive because of the way incremental backups are handled!
-  disko.devices.disk.backup = {
-    type = "disk";
-    device = "/dev/disk/by-id/usb-WD_Elements_2620_575847324541303455325633-0:0";
-    content = {
-      type = "gpt";
-      partitions = {
-        luks = {
-          size = "100%";
-          content = {
-            type = "luks";
-            name = "crypt-backup";
-            content = {
-              type = "btrfs";
-              mountpoint = "/mnt/backup";
-              mountOptions = [
-                "compress=zstd"
-              ];
-              subvolumes."/daily" = {};
-            };
-          };
-        };
-      };
-    };
+{
+  # Decrypt backup drive when connected. Courtesy of <https://blog.pankajraghav.com/2024/09/17/AUTOMOUNT.html>.
+  environment.etc.crypttab.text = ''
+    crypt-backup PARTUUID=e1b2ad26-ada4-443e-958a-e916874154ee /backup_key noauto
+  '';
+  services.udev.extraRules = ''
+    SUBSYSTEM=="block" ENV{ID_WWN}=="0x50014ee2693af387",\
+    ENV{SYSTEMD_WANTS}="systemd-cryptsetup@crypt-backup.service"
+  '';
+
+  fileSystems."/mnt/backup" = {
+    device = "/dev/mapper/crypt-backup";
+    fsType = "btrfs";
+    options = [
+      "compress=zstd"
+      "x-systemd.automount"
+      "x-systemd.device-timeout=5"
+      "noauto"
+    ];
   };
 
-  systemd.services.snapshot-and-backup-home = {
-    startAt = "*-*-* 18:00:00";
-    path = with pkgs; [ btrfs-progs ];
-    after = [ "local-fs.target" ];
-    script = ''
-      btrfs su sn -r /home /backup-new
-      sync
-
-      if [ -e /backup ] ; then
-        echo Doing incremental backup...
-        btrfs send --compressed-data -p /backup /backup-new | btrfs receive /mnt/backup
-      else
-        echo Doing full backup...
-        btrfs send --compressed-data /backup-new | btrfs receive /mnt/backup
-      fi
-
-      mv /mnt/backup/backup-new /mnt/backup/backup
-      btrfs su sn -r /mnt/backup/backup /mnt/backup/backup.$(date +%Y-%m-%d.%H:%M:%S)
-
-      btrfs su de /backup || true
-      mv /backup-new /backup
-    '';
+  services.btrbk.instances.btrbk = {
+    onCalendar = "*-*-* 17:00:00"; # Default "daily" would fire at midnight, while my desktop is down.
+    settings = {
+      snapshot_preserve = "14d";
+      snapshot_preserve_min = "2d";
+      subvolume."/home" = {};
+      target."/mnt/backup" = {};
+    };
   };
 }

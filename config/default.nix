@@ -19,6 +19,7 @@
     ./app/office.nix
     ./app/thunderbird.nix
     ./app/tmux.nix
+    ./app/zathura.nix
     ./dev/latex.nix
     ./dev/jupyter.nix
     ./dev/arduino.nix

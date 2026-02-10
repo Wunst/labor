@@ -112,8 +112,8 @@ in {
       network-manager-applet.enable = true;
       picom = {
         enable = true;
-        # More efficient OpenGL backend.
-        backend = "glx";
+        # glx is more efficient, but has rendering artifacts on my machine.
+        backend = "xrender";
 
         activeOpacity = 1.0;
         inactiveOpacity = 0.9;
