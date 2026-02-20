@@ -33,9 +33,12 @@ return {
 
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       callback = function (args)
-        vim.treesitter.start(args.buf)
+        pcall(vim.treesitter.start, args.buf)
         vim.bo.syntax = "ON" -- Retain regex highlighting where needed.
       end,
     })
+
+    -- Detect LaTeX by default instead of plaintex.
+    vim.g.tex_flavor = "tex"
   end,
 }

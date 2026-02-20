@@ -21,5 +21,3 @@ vim.g.maplocalleader = ","
 
 vim.o.background = "dark"
 
-vim.cmd.colorscheme "retrobox"
-

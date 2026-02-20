@@ -14,7 +14,7 @@
     options = [
       "compress=zstd"
       "x-systemd.automount"
-      "x-systemd.device-timeout=5"
+      "x-systemd.device-timeout=10" # longer timeout needed as backup fails otherwise.
       "noauto"
     ];
   };
@@ -24,7 +24,9 @@
     settings = {
       snapshot_preserve = "14d";
       snapshot_preserve_min = "2d";
-      subvolume."/home" = {};
+      subvolume."/home" = {
+        snapshot_dir = "/snapshots";
+      };
       target."/mnt/backup" = {};
     };
   };

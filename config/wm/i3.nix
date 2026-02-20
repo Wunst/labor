@@ -3,6 +3,9 @@
   themeCfg = config.theme;
 in {
   services = {
+    xscreensaver.enable = true;
+    gnome.gnome-keyring.enable = true; # System-level, needs access to PAM modules.
+
     gvfs.enable = true;
     udisks2.enable = true;
     xserver = {
@@ -34,8 +37,6 @@ in {
     services = {
       # Media keys.
       playerctld.enable = true;
-
-      gnome-keyring.enable = true;
     };
 
     xsession.windowManager.i3 = {
@@ -64,6 +65,8 @@ in {
           XF86AudioMute = "exec --no-startup-id ${pkgs.pulseaudioFull}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
 
           Print = "exec ${pkgs.mate.mate-utils}/bin/mate-screenshot";
+
+          "Mod1+l" = "exec ${pkgs.xscreensaver}/bin/xscreensaver-command -activate";
         };
 
         # Assign windows to workspaces.
@@ -205,5 +208,7 @@ in {
         };
       };
     };
+
+    home.file.".xscreensaver".source = ./.xscreensaver;
   };
 }
