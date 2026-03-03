@@ -90,7 +90,7 @@
             text = ''
               Ben Matthies
               Student der Physik (1Ba)
-              3. Fachsemester
+              4. Fachsemester
               Tutorien für die Physik I und II (UB)
             '';
           };
