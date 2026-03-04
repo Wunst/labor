@@ -17,6 +17,7 @@
     ./app/multimedia.nix
     ./app/obs-studio.nix
     ./app/office.nix
+    ./app/orca-slicer.nix
     ./app/thunderbird.nix
     ./app/tmux.nix
     ./app/zathura.nix
