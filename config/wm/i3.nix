@@ -19,11 +19,11 @@ in {
     thunar
     tumbler
     ffmpegthumbnailer
-    mate.engrampa
+    engrampa
     zip
     unzip
     p7zip
-    mate.eom
+    eom
   ];
 
   # Enable XDG desktop portal.
@@ -64,7 +64,7 @@ in {
           XF86AudioLowerVolume = "exec --no-startup-id ${pkgs.pulseaudioFull}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
           XF86AudioMute = "exec --no-startup-id ${pkgs.pulseaudioFull}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
 
-          Print = "exec ${pkgs.mate.mate-utils}/bin/mate-screenshot";
+          Print = "exec ${pkgs.mate-utils}/bin/mate-screenshot";
 
           "Mod1+l" = "exec ${pkgs.xscreensaver}/bin/xscreensaver-command -activate";
         };

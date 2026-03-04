@@ -7,6 +7,6 @@
     audacity
     musescore
     kicad
-    freecad
+    freecad-fix-gsettings-schemas
   ];
 }
