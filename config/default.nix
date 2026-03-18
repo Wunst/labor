@@ -1,14 +1,15 @@
 {
   imports = [
     ./auto-login.nix
+    ./email.nix
     ./boot.nix
     ./docker.nix
-    ./email.nix
     ./font.nix
     ./games.nix
     ./i18n.nix
     ./nix.nix
     ./theme.nix
+    ./app/pass.nix
     ./app/creative.nix
     ./app/discord.nix
     ./app/firefox.nix
