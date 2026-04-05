@@ -44,34 +44,39 @@
 
     overlays.default = final: prev: import ./pkgs prev;
 
-    nixosConfigurations.wunstpc = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        home-manager.nixosModules.home-manager
-        disko.nixosModules.disko
+    nixosConfigurations = let
+      mkSystem = hostName: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          disko.nixosModules.disko
 
-        sops-nix.nixosModules.default
-        nur.modules.nixos.default
-        ./config
-        ./systems/wunstpc
-        {
-          nixpkgs.overlays = [
-            self.overlays.default
-          ];
-
-          sops = {
-            defaultSopsFormat = "binary";
-            age.sshKeyPaths = [
-              "/etc/ssh/ssh_host_ed25519_key"
+          sops-nix.nixosModules.default
+          nur.modules.nixos.default
+          ./config
+          ./systems/${hostName}
+          {
+            nixpkgs.overlays = [
+              self.overlays.default
             ];
-          };
-        }
-        ./allow-unfree.nix
-      ];
 
-      specialArgs = {
-        secrets = ./secrets;
+            sops = {
+              defaultSopsFormat = "binary";
+              age.sshKeyPaths = [
+                "/etc/ssh/ssh_host_ed25519_key"
+              ];
+            };
+          }
+          ./allow-unfree.nix
+        ];
+
+        specialArgs = {
+          secrets = ./secrets;
+        };
       };
+    in {
+      wunstpc = mkSystem "wunstpc";
+      wunstasus = mkSystem "wunstasus";
     };
   };
 }

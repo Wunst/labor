@@ -133,7 +133,7 @@ in {
 
             modules-left = "workspaces";
             modules-center = "title";
-            modules-right = "sound tray date";
+            modules-right = "sound tray date battery";
 
             padding = 1;
             module-margin = 1;
@@ -200,6 +200,12 @@ in {
             date = "%Y-%m-%d%";
             time = "%H:%M";
             label = "%date% %time%";
+          };
+
+          "module/battery" = {
+            type = "internal/battery";
+            battery = "BAT0";
+            adapter = "AC0";
           };
         };
 
