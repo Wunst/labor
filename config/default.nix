@@ -29,6 +29,7 @@
     ./dev/web.nix
     ./editor/neovim.nix
     ./networking/networkmanager.nix
+    ./networking/fortisslvpn.nix
     ./services/openssh.nix
     ./services/pipewire.nix
     ./services/printing.nix
