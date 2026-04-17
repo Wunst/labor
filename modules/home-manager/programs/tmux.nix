@@ -1,5 +1,10 @@
-{
-  home-manager.users.ben = {
+{ config, lib, ... }:
+let
+  cfg = config.programs.tmux';
+in {
+  options.programs.tmux'.enable = lib.mkEnableOption "Terminal multiplexer";
+
+  config = lib.mkIf cfg.enable {
     programs.tmux = {
       enable = true;
       shortcut = "a";

@@ -1,0 +1,31 @@
+rec {
+  theme = "solarized";
+  background = "002b36";
+  foreground = "839496";
+  cursor = "93a1a1";
+  highlight = "073642";
+  wallpaper = "ship.png";
+
+  color0 = "073642";
+  color1 = "dc322f";
+  color2 = "859900";
+  color3 = "b58900";
+  color4 = "258bd2";
+  color5 = "d33682";
+  color6 = "2aa198";
+  color7 = "eee8d5";
+  color8 = "002b36";
+  color9 = "cb4b16";
+  color10 = "586e75";
+  color11 = "657b83";
+  color12 = "839496";
+  color13 = "6c71c4";
+  color14 = "93a1a1";
+  color15 = "fdf6e3";
+
+  withHashPrefix = builtins.mapAttrs (_: color: "#${color}") { 
+    inherit background foreground cursor highlight 
+      color0 color1 color2 color3 color4 color5 color6 color7
+      color8 color9 color10 color11 color12 color13 color14 color15; 
+  };
+}

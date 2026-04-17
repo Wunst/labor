@@ -1,5 +1,10 @@
-{
-  home-manager.users.ben = {
+{ config, lib, ... }:
+let
+  cfg = config.programs.thunderbird';
+in {
+  options.programs.thunderbird'.enable = lib.mkEnableOption "Thunderbird mail client";
+
+  config = lib.mkIf cfg.enable {
     programs.thunderbird = {
       enable = true;
       profiles.default = {

@@ -1,5 +1,10 @@
-{ pkgs, ... }: {
-  home-manager.users.ben = {
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.programs.firefox';
+in {
+  options.programs.firefox'.enable = lib.mkEnableOption "the Firefox web browser";
+
+  config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
       policies = {
