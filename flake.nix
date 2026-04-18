@@ -53,7 +53,8 @@
 
           sops-nix.nixosModules.default
           nur.modules.nixos.default
-          ./config
+          ./configuration.nix
+          ./modules/nixos
           ./systems/${hostName}
           {
             nixpkgs.overlays = [
@@ -66,13 +67,17 @@
                 "/etc/ssh/ssh_host_ed25519_key"
               ];
             };
+
+            home-manager = {
+              useGlobalPkgs = true;
+              users.ben.imports = [
+                ./home.nix
+                ./modules/home-manager
+              ];
+            };
           }
           ./allow-unfree.nix
         ];
-
-        specialArgs = {
-          secrets = ./secrets;
-        };
       };
     in {
       wunstpc = mkSystem "wunstpc";

@@ -1,43 +1,19 @@
-{ config, lib, pkgs, ... }: let
-  fontCfg = config.font;
-  themeCfg = config.theme;
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.wm.i3;
+  colors = import ../lib/colors.nix;
 in {
-  services = {
-    xscreensaver.enable = true;
-    gnome.gnome-keyring.enable = true; # System-level, needs access to PAM modules.
+  options.wm.i3.enable = lib.mkEnableOption "i3 window manager";
 
-    gvfs.enable = true;
-    udisks2.enable = true;
-    xserver = {
-      desktopManager.runXdgAutostartIfNone = true;
-      windowManager.i3.enable = true;
+  config = lib.mkIf cfg.enable {
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = [ "gtk" ];
     };
-  };
 
-  # Some essential DE utilities.
-  environment.systemPackages = with pkgs; [
-    thunar
-    tumbler
-    ffmpegthumbnailer
-    engrampa
-    zip
-    unzip
-    p7zip
-    eom
-  ];
-
-  # Enable XDG desktop portal.
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = [ "gtk" ];
-  };
-
-  home-manager.users.ben = {
-    services = {
-      # Media keys.
-      playerctld.enable = true;
-    };
+    # Media keys.
+    services.playerctld.enable = true;
 
     xsession.windowManager.i3 = {
       enable = true;
@@ -127,9 +103,8 @@ in {
         script = "polybar bar &";
         config = {
           "bar/bar" = {
-            background = "#${themeCfg.colors.base01}";
-            foreground = "#${themeCfg.colors.base05}";
-            font-0 = "${fontCfg.name}:size=${toString fontCfg.size}:antialias=false;5";
+            inherit (colors) background foreground;
+            #font-0 = "${fontCfg.name}:size=${toString fontCfg.size}:antialias=false;5";
 
             modules-left = "workspaces";
             modules-center = "title";
@@ -154,15 +129,15 @@ in {
             icon-9 = "10;0  ";
 
             label-active = " %icon% ";
-            label-active-background = "#${themeCfg.colors.base0A}";
-            label-active-foreground = "#${themeCfg.colors.base01}";
+            label-active-background = colors.color3;
+            label-active-foreground = colors.background;
 
             label-occupied = " %icon% ";
             label-empty = " %icon% ";
 
             label-urgent = " %icon% ";
-            label-urgent-background = "#${themeCfg.colors.base0D}";
-            label-urgent-foreground = "#${themeCfg.colors.base01}";
+            label-urgent-background = colors.color4;
+            label-urgent-foreground = colors.background;
           };
 
           "module/title" = {
@@ -184,9 +159,9 @@ in {
             bar-volume-width = 15;
             bar-volume-indicator = "";
             bar-volume-fill = "━";
-            bar-volume-fill-foreground = "#${themeCfg.colors.base0A}";
+            bar-volume-fill-foreground = colors.color3;
             bar-volume-empty = "━";
-            bar-volume-empty-foreground = "#${themeCfg.colors.base00}";
+            bar-volume-empty-foreground = colors.color8;
           };
 
           "module/tray" = {
@@ -214,7 +189,5 @@ in {
         };
       };
     };
-
-    home.file.".xscreensaver".source = ./.xscreensaver;
   };
 }

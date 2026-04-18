@@ -84,7 +84,7 @@
     ];
   };
 
-  sops.secrets.wireguard-key.sopsFile = "${secrets}/wunstasus/wireguardKey";
+  sops.secrets.wireguard-key.sopsFile = ../../secrets/wunstasus/wireguardKey;
 
   services.btrfs.autoScrub = {
     enable = true;
