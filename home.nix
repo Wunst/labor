@@ -110,6 +110,27 @@
     style.name = "adwaita-dark";
   };
 
+  fonts.fontconfig = {
+    enable = true;
+    configFile.terminess-no-antialiasing.text = /* xml */ ''
+      <?xml version="1.0"?>
+      <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+      <fontconfig>
+        <description>
+          Disable antialiasing for Terminess NerdFont since it is a bitmap font
+        </description>
+        <match target="pattern">
+          <test compare="eq" name="family" qual="any">
+            <string>Terminess Nerd Font</string>
+          </test>
+          <edit mode="assign" name="antialias">
+            <bool>false</bool>
+          </edit>
+        </match>
+      </fontconfig>
+    '';
+  };
+
   xdg = {
     enable = true;
     userDirs = {

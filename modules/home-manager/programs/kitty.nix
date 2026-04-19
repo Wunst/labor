@@ -8,6 +8,11 @@ in {
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
+      font = {
+        name = "Terminess Nerd Font";
+        size = 18;
+      };
+
       settings = {
         inherit (colors)
           background foreground cursor 
