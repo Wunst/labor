@@ -5,6 +5,9 @@ return {
   enabled = os.getenv('THEME') == 'solarized',
   config = function ()
     require('solarized').setup{
+      transparent = {
+        enabled = true,
+      },
       variant = 'autumn',
     }
 
