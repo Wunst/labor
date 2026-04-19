@@ -98,6 +98,8 @@
     password-store.enable = true;
   };
 
+  services.gnome-keyring.enable = true;
+
   gtk = {
     enable = true;
     colorScheme = "dark";
