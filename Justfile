@@ -3,7 +3,7 @@ switch:
   sudo nixos-rebuild switch --flake .
 
   # Symlink neovim config for quick iteration without rebuilding.
-  ln -rs nvim ~/.config/nvim
+  ln -rsT nvim ~/.config/nvim
 
 edit-secrets file:
   SOPS_AGE_KEY_CMD="age-plugin-fido2-hmac -m" sops {{file}}

@@ -1,5 +1,6 @@
 {
   imports = [
+    ./programs/gpg.nix
     ./programs/zsh.nix
     ./programs/tmux.nix
     ./programs/kitty.nix

@@ -79,6 +79,8 @@
     kitty'.enable = true;
     zathura'.enable = true;
 
+    gpg'.enable = true;
+
     # Credential helper for github.
     gh.enable = true;
     git = {
