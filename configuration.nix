@@ -61,6 +61,7 @@
         autoLogin.user = "ben";
       };
     };
+    xscreensaver.enable = true;
   };
 
   sops.secrets.hashedPassword = { sopsFile = ./secrets/hashedPassword; neededForUsers = true; };

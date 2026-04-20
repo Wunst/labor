@@ -133,6 +133,8 @@
     '';
   };
 
+  home.file.".xscreensaver".source = import ./.xscreensaver;
+
   xdg = {
     enable = true;
     userDirs = {
