@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 let
   cfg = config.wm.sway;
   colors = import ../lib/colors.nix;
@@ -32,6 +32,11 @@ in {
           titlebar = false;
         };
 
+        input."*" = {
+          xkb_layout = osConfig.services.xserver.xkb.layout;
+          xkb_options = osConfig.services.xserver.xkb.options;
+        };
+
         keybindings = lib.mkOptionDefault {
           XF86AudioPlay = "exec playerctl play-pause";
           XF86AudioPause = "exec playerctl play-pause";
@@ -43,8 +48,6 @@ in {
           XF86AudioMute = "exec --no-startup-id ${pkgs.pulseaudioFull}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
 
           Print = "exec ${pkgs.mate-utils}/bin/mate-screenshot";
-
-          "Mod1+l" = "exec ${pkgs.xscreensaver}/bin/xscreensaver-command -activate";
         };
 
         # Assign windows to workspaces.
