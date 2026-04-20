@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.wm.i3;
+  cfg = config.wm.sway;
   colors = import ../lib/colors.nix;
 in {
-  options.wm.i3.enable = lib.mkEnableOption "i3 window manager";
+  options.wm.sway.enable = lib.mkEnableOption "I3-compatible tiling Wayland compositor";
 
   config = lib.mkIf cfg.enable {
     xdg.portal = {
@@ -15,9 +15,11 @@ in {
     # Media keys.
     services.playerctld.enable = true;
 
-    xsession.windowManager.i3 = {
+    wayland.windowManager.sway = {
       enable = true;
       config = {
+        terminal = "$TERMINAL";
+
         modifier = "Mod1"; # Alt.
         defaultWorkspace = "workspace number 1";
         bars = [];
@@ -89,15 +91,6 @@ in {
 
     services = {
       network-manager-applet.enable = true;
-      picom = {
-        enable = true;
-        # glx is more efficient, but has rendering artifacts on my machine.
-        backend = "xrender";
-
-        activeOpacity = 1.0;
-        inactiveOpacity = 0.9;
-      };
-
       polybar = {
         enable = true;
         script = "polybar bar &";
@@ -189,5 +182,12 @@ in {
         };
       };
     };
+
+    # Start sway on login.
+    programs.zsh.loginExtra = ''
+      if [ "$TTY" = "/dev/tty1" ]; then
+        exec sway
+      fi
+    '';
   };
 }

@@ -44,6 +44,8 @@
     steam.enable = true;
     obs-studio'.enable = true;
     orca-slicer.enable = true;
+
+    sway.enable = true;
   };
 
   services = {
@@ -53,14 +55,6 @@
 
     gvfs.enable = true;
     udisks2.enable = true;
-    xserver = {
-      enable = true;
-      windowManager.i3.enable = true;
-      displayManager.lightdm = {
-        enable = true;
-        autoLogin.user = "ben";
-      };
-    };
   };
 
   sops.secrets.hashedPassword = { sopsFile = ./secrets/hashedPassword; neededForUsers = true; };

@@ -66,7 +66,7 @@
     godot_4
   ];
 
-  wm.i3.enable = true;
+  wm.sway.enable = true;
 
   programs = {
     zsh'.enable = true;

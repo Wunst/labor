@@ -8,6 +8,6 @@
     ./programs/firefox.nix
     ./programs/zathura.nix
     ./programs/thunderbird.nix
-    ./wm/i3.nix
+    ./wm/sway.nix
   ];
 }
