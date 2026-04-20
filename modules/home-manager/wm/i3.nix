@@ -18,6 +18,7 @@ in {
     xsession.windowManager.i3 = {
       enable = true;
       config = {
+        terminal = config.home.sessionVariables.TERMINAL;
         modifier = "Mod1"; # Alt.
         defaultWorkspace = "workspace number 1";
         bars = [];
@@ -44,6 +45,11 @@ in {
 
           "Mod1+l" = "exec ${pkgs.xscreensaver}/bin/xscreensaver-command -activate";
         };
+
+        startup = [
+          { notification = false; command = "${pkgs.dex}/bin/dex -a"; }
+          { command = "${pkgs.feh}/bin/feh --bg-fill ${colors.wallpaper}"; }
+        ];
 
         # Assign windows to workspaces.
         assigns = {
@@ -85,6 +91,7 @@ in {
             command = "floating enable"; }
         ];
       };
+
     };
 
     services = {

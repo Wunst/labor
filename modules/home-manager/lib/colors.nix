@@ -4,7 +4,7 @@
   foreground = "#839496";
   cursor = "#93a1a1";
   highlight = "#073642";
-  wallpaper = "ship.png";
+  wallpaper = ../../../wallpaper/ship.png;
 
   color0 = "#073642";
   color1 = "#dc322f";

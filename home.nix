@@ -133,7 +133,7 @@
     '';
   };
 
-  home.file.".xscreensaver".source = import ./.xscreensaver;
+  home.file.".xscreensaver".source = ./.xscreensaver;
 
   xdg = {
     enable = true;
