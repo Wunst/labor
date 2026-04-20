@@ -64,6 +64,10 @@
 
     # Dev.
     godot_4
+
+    # Games.
+    prismlauncher
+    aisleriot
   ];
 
   wm.i3.enable = true;
