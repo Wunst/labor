@@ -11,8 +11,8 @@ in {
       options = {
         recolor = true;
         recolor-keephue = true;
-        recolor-lightcolor = colors.foreground;
-        recolor-darkcolor = colors.background;
+        recolor-lightcolor = colors.background;
+        recolor-darkcolor = colors.foreground;
         default-bg = colors.background;
         default-fg = colors.foreground;
       };
