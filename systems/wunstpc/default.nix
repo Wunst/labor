@@ -82,9 +82,5 @@
     interval = "monthly";
   };
 
-  # Use the proprietary nvidia drivers for my 1050.
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
-
   system.stateVersion = "25.11";
 }

@@ -12,11 +12,16 @@ in {
     programs.neovim = {
       enable = true;
       defaultEditor = true;
+      withPython3 = true;
       withNodeJs = false;
       withRuby = false;
 
       viAlias = true;
       vimAlias = true;
+
+      # I don't use Nix to manage my neovim config.
+      initLua = "";
+      sideloadInitLua = true;
       
       # Runtime dependencies.
       extraPackages = with pkgs; [

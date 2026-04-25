@@ -39,7 +39,7 @@
     audacity
     musescore
     kicad
-    freecad-fix-gsettings-schemas
+    freecad
 
     # Multimedia.
     vlc
