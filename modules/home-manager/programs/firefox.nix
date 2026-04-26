@@ -7,7 +7,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      configPath = "${config.xdg.configHome}/mozilla/firefox";
+      configPath = ".mozilla/firefox";
       policies = {
         SanitizeOnShutdown = true;
         PromptForDownloadLocation = true;
